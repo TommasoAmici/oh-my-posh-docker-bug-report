@@ -1,0 +1,58 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "background": "#3465a4",
+          "foreground": "#e4e4e4",
+          "properties": {
+            "home_icon": "~",
+            "style": "folder"
+          },
+          "style": "plain",
+          "template": "{{ if .Path }} {{ .Path }} {{ else }} / {{end}}",
+          "type": "path"
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "template": "<parentBackground,transparent></>"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "segments": [
+        {
+          "type": "executiontime",
+          "background": "#c4a000",
+          "foreground": "#000000",
+          "properties": {
+            "style": "round"
+          },
+          "style": "plain",
+          "template": "<background,parentBackground></> {{ .FormattedMs }} \uf252 "
+        },
+        {
+          "type": "status",
+          "background": "#fff",
+          "background_templates": ["{{ if gt .Code 0 }}#cc2222{{ end }}"],
+          "foreground": "#000",
+          "properties": {
+            "always_enabled": true
+          },
+          "style": "plain",
+          "template": "<background,parentBackground></> {{ if gt .Code 0 }}{{ .Meaning }}{{ else }}\u2714{{ end }} "
+        }
+      ],
+      "type": "rprompt"
+    }
+  ],
+  "console_title_template": "{{ .Shell }} in {{ .Folder }}",
+  "final_space": true,
+  "version": 2,
+  "shell_integration": true
+}
